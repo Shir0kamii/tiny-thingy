@@ -1,6 +1,8 @@
 from thingy import DatabaseThingy
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 from tinydb.database import Document
+
+q = Query()
 
 
 class Thingy(DatabaseThingy):
