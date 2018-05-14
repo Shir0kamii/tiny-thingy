@@ -1,9 +1,16 @@
 from thingy import DatabaseThingy
 from tinydb import TinyDB
+from tinydb.database import Document
 
 
 class Thingy(DatabaseThingy):
     """Represents a JSON object in a table"""
+
+    def __init__(self, *args, **kwargs):
+        for arg in args:
+            if isinstance(arg, Document):
+                self.doc_id = arg.doc_id
+        super().__init__(*args, **kwargs)
 
     @classmethod
     def _get_table(cls, database, table_name):
@@ -24,3 +31,12 @@ class Thingy(DatabaseThingy):
         else:
             documents = cls.table.search(query)
         return [cls(doc) for doc in documents]
+
+    def save(self):
+        data = self.__dict__.copy()
+        doc_id = data.pop("doc_id", None)
+        if doc_id is not None:
+            self.get_table().update(data, doc_ids=[doc_id])
+        else:
+            self.doc_id = self.get_table().insert(data)
+        return self

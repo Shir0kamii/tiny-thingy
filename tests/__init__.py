@@ -44,3 +44,16 @@ def test_find(TestThingy, table, q):
         table.insert(document)
     assert len(TestThingy.find()) == 3
     assert len(TestThingy.find(q.id > 20)) == 2
+
+
+def test_save(TestThingy, table):
+    thingy = TestThingy(test=42)
+    thingy.save()
+    assert len(table) == 1
+    thingy2 = TestThingy.find()[0]
+    assert thingy2.doc_id == thingy.doc_id
+    thingy.test = 101
+    thingy.save()
+    thingy2 = TestThingy.find()[0]
+    print(thingy.test, thingy2.test)
+    assert thingy2.test == thingy.test
