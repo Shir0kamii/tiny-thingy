@@ -22,3 +22,10 @@ def test_thingy_names(database):
     assert Foo.database == database
     assert Foo.table == database.table("foo")
     assert Foo.table_name == "foo"
+
+
+def test_table_name(table):
+    class Foo(Thingy):
+        _table = table
+
+    assert Foo.table_name == table.name
