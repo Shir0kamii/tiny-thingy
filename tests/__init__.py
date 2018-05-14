@@ -31,8 +31,16 @@ def test_table_name(table):
     assert Foo.table_name == table.name
 
 
-def test_create(TestThingy, table, q):
+def test_create(TestThingy, table):
     documents = [{"Test": 42}, {"foo": "bar"}, {"baz": "fool"}]
     for document in documents:
         TestThingy.create(document)
     assert table.all() == documents
+
+
+def test_find(TestThingy, table, q):
+    documents = [{"id": 42}, {"id": 32}, {"id": 13}]
+    for document in documents:
+        table.insert(document)
+    assert len(TestThingy.find()) == 3
+    assert len(TestThingy.find(q.id > 20)) == 2

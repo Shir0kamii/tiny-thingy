@@ -16,3 +16,11 @@ class Thingy(DatabaseThingy):
     @classmethod
     def create(cls, obj):
         return cls.table.insert(obj)
+
+    @classmethod
+    def find(cls, query=None):
+        if query is None:
+            documents = cls.table.all()
+        else:
+            documents = cls.table.search(query)
+        return [cls(doc) for doc in documents]
