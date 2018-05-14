@@ -29,3 +29,10 @@ def test_table_name(table):
         _table = table
 
     assert Foo.table_name == table.name
+
+
+def test_create(TestThingy, table, q):
+    documents = [{"Test": 42}, {"foo": "bar"}, {"baz": "fool"}]
+    for document in documents:
+        TestThingy.create(document)
+    assert table.all() == documents

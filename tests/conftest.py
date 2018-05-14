@@ -1,7 +1,7 @@
 import os
 
 import pytest
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 from tiny_thingy import Thingy
 
@@ -25,3 +25,8 @@ def TestThingy(database, table):
         _table = table
 
     return TestThingy
+
+
+@pytest.fixture
+def q():
+    return Query()

@@ -12,3 +12,7 @@ class Thingy(DatabaseThingy):
     @classmethod
     def _get_table_name(cls, table):
         return table.name
+
+    @classmethod
+    def create(cls, obj):
+        return cls.table.insert(obj)
