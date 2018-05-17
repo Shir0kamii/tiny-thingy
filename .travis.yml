@@ -11,3 +11,14 @@ install:
 
 script:
     - py.test
+
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: shir0kamii
+  password:
+    secure: RW+HPtZBqJCA/qV3gLltelB/us3lhL6Blr1fxLLImuudshuxi4vFZz5L0QPeC9o8C6o5irgX0XZ/RzJFCILpJCCRsadq5hZwqBzqMm3imscDqMSYvpkNKtaN+SXVpO32FDsnzVtMHzp3oyESOU9+eo0v8S2JiIGwV7IG322ZWUvKD+OnFoJY7rRFtIox2BuY7RMsaF5OThKvMVzxxdZBKRAe6mu1Y5DJZNkeQOIvWUyV3W0MdmiSD1J29tWfxMS54AOIzioGIpzoPiJi5SEqHvrcNmSdACV621wl3NSJrEpIEgGA+4iTtzXrVeJxpfHunnlOgEurn+gcNkKyNAehQ2Wo0mzIyJDq4g1nAbSDr031XlPlmFUws2FGHTs/5ipDJ6or01YLHEV2jWF+Uc/+rXfZWwuw+nHgNQC3P6s238/f9ooJv04ZAZyQ7q5ZlnP1f1exyaNbtuxKzbwWpzye9qpphIol8BdeXo/W+HfZf9KPMNEBw0eeRaU08fbKqD99G/bTLe1lch6mLsibeL2YwbXX0KJV9lUV5GkzYkgJoaY0CHXOQVD9bN98RmjeDiqV6TNv3VPmysxAD3JttWRWz5mgAgF+Vqo5y8pbLyBvJSoQXf/b96o6Jf29da/ukBwgVFDNnm67QdM05OwQokSede6QchY6IE4FaR6qvR6yt+Y=
+  on:
+    tags: true
+    repo: Shir0kamii/tiny-thingy
+    python: 3.6
