@@ -3,13 +3,13 @@ from setuptools import setup
 
 setup(
     name="Tiny-Thingy",
-    version="0.0.1",
+    version="0.0.2",
     url="https://github.com/Shir0kamii/tiny-thingy",
     license="MIT",
     author="Shir0kamii",
     description="JSON database with python object notation",
     long_description=None,
-    packages=["tiny_thingy"],
+    py_modules=["tiny_thingy"],
     include_package_data=True,
     zip_safe=False,
     platforms="any",
