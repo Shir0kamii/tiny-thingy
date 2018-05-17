@@ -55,5 +55,12 @@ def test_save(TestThingy, table):
     thingy.test = 101
     thingy.save()
     thingy2 = TestThingy.find()[0]
-    print(thingy.test, thingy2.test)
     assert thingy2.test == thingy.test
+
+
+def test_find_one(TestThingy, table):
+    assert TestThingy.find_one() is None
+    TestThingy(test=42, foo="bar").save()
+    thingy = TestThingy.find_one()
+    assert isinstance(thingy, TestThingy)
+    assert thingy.test == 42

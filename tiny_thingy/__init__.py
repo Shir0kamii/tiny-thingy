@@ -34,6 +34,14 @@ class Thingy(DatabaseThingy):
             documents = cls.table.search(query)
         return [cls(doc) for doc in documents]
 
+    @classmethod
+    def find_one(cls, query=None):
+        result = cls.find(query)
+        try:
+            return next(iter(result))
+        except StopIteration:
+            return None
+
     def save(self):
         data = self.__dict__.copy()
         doc_id = data.pop("doc_id", None)
