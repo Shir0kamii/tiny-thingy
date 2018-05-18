@@ -103,3 +103,10 @@ def test_find_one(TestThingy, table):
     thingy = TestThingy.find_one()
     assert isinstance(thingy, TestThingy)
     assert thingy.test == 42
+
+
+def test_count(TestThingy, table):
+    documents = [{"id": 42}, {"id": 32}, {"id": 13}]
+    for document in documents:
+        table.insert(document)
+    assert TestThingy.count() == 3

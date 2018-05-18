@@ -46,6 +46,10 @@ class Thingy(DatabaseThingy):
         except StopIteration:
             return None
 
+    @classmethod
+    def count(cls):
+        return len(cls.table)
+
     def save(self):
         data = self.__dict__.copy()
         doc_id = data.pop("doc_id", None)
