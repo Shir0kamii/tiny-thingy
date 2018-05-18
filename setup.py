@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="Tiny-Thingy",
-    version="0.1.0",
+    version="0.1.1",
     url="https://github.com/Shir0kamii/tiny-thingy",
     license="MIT",
     author="Shir0kamii",
