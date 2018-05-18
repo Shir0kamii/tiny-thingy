@@ -23,6 +23,10 @@ class Thingy(DatabaseThingy):
         return table.name
 
     @classmethod
+    def use_database(cls, filename):
+        cls._database = TinyDB(filename)
+
+    @classmethod
     def create(cls, obj):
         return cls.table.insert(obj)
 
@@ -50,3 +54,6 @@ class Thingy(DatabaseThingy):
         else:
             self.doc_id = self.get_table().insert(data)
         return self
+
+
+use_database = Thingy.use_database

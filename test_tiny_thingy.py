@@ -60,6 +60,16 @@ def test_table_name(table):
     assert Foo.table_name == table.name
 
 
+def test_use_database():
+    class Foo(Thingy):
+        pass
+
+    filename = "/tmp/test-tiny-thingy-use-database.json"
+    Foo.use_database(filename)
+    assert Foo.database is not None
+    os.remove(filename)
+
+
 def test_create(TestThingy, table):
     documents = [{"Test": 42}, {"foo": "bar"}, {"baz": "fool"}]
     for document in documents:
