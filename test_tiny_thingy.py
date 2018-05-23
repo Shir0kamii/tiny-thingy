@@ -1,9 +1,9 @@
 import os
 
 import pytest
-from tinydb import TinyDB, Query
+from tinydb import TinyDB
 
-from tiny_thingy import Thingy
+from tiny_thingy import Thingy, q
 
 
 @pytest.fixture
@@ -25,11 +25,6 @@ def TestThingy(database, table):
         _table = table
 
     return TestThingy
-
-
-@pytest.fixture
-def q():
-    return Query()
 
 
 def test_thingy_database(TestThingy, database):
@@ -77,7 +72,7 @@ def test_create(TestThingy, table):
     assert table.all() == documents
 
 
-def test_find(TestThingy, table, q):
+def test_find(TestThingy, table):
     documents = [{"id": 42}, {"id": 32}, {"id": 13}]
     for document in documents:
         table.insert(document)
