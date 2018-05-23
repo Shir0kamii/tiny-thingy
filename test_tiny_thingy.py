@@ -100,6 +100,17 @@ def test_find_one(TestThingy, table):
     assert thingy.test == 42
 
 
+def test_find_one_doc_id(TestThingy):
+    assert TestThingy.find_one() is None
+    TestThingy().save()
+    thingy = TestThingy(lol=42, foo="bar").save()
+    thingy = TestThingy.find_one(doc_id=thingy.doc_id)
+    assert isinstance(thingy, TestThingy)
+    assert thingy.lol == 42
+    thingy2 = TestThingy.find_one(q.lol == 69, doc_id=thingy.doc_id)
+    assert thingy2 is None
+
+
 def test_count(TestThingy, table):
     documents = [{"id": 42}, {"id": 32}, {"id": 13}]
     for document in documents:
