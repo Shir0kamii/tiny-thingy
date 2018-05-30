@@ -73,5 +73,8 @@ class Thingy(DatabaseThingy):
             self.doc_id = self.get_table().insert(data)
         return self
 
+    def delete(self):
+        self.get_table().remove(doc_ids=[self.doc_id])
+
 
 use_database = Thingy.use_database

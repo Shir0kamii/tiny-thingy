@@ -116,3 +116,10 @@ def test_count(TestThingy, table):
     for document in documents:
         table.insert(document)
     assert TestThingy.count() == 3
+
+
+def test_delete(TestThingy, table):
+    thingy = TestThingy(foo="bar").save()
+    assert len(table) == 1
+    thingy.delete()
+    assert len(table) == 0
