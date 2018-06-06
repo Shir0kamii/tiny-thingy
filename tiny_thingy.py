@@ -68,6 +68,10 @@ class Thingy(DatabaseThingy):
     def remove(cls, query=None, doc_ids=None):
         return cls.table.remove(query, doc_ids=doc_ids)
 
+    @classmethod
+    def inplace_update(cls, fields, query=None, doc_ids=None):
+        return cls.table.update(fields, query, doc_ids=doc_ids)
+
     def save(self):
         data = self.__dict__.copy()
         doc_id = data.pop("doc_id", None)

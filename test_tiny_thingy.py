@@ -125,6 +125,14 @@ def test_remove(TestThingy, table):
     assert len(table) == 0
 
 
+def test_inplace_update(TestThingy, table):
+    TestThingy(foo="bar").save()
+    assert len(table) == 1
+    TestThingy.inplace_update({"foo": "baz"})
+    assert len(table) == 1
+    assert TestThingy.find_one().foo == "baz"
+
+
 def test_delete(TestThingy, table):
     thingy = TestThingy(foo="bar").save()
     assert len(table) == 1
