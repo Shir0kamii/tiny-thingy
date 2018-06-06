@@ -64,6 +64,10 @@ class Thingy(DatabaseThingy):
     def count(cls):
         return len(cls.table)
 
+    @classmethod
+    def remove(cls, query=None, doc_ids=None):
+        return cls.table.remove(query, doc_ids=doc_ids)
+
     def save(self):
         data = self.__dict__.copy()
         doc_id = data.pop("doc_id", None)
@@ -74,7 +78,7 @@ class Thingy(DatabaseThingy):
         return self
 
     def delete(self):
-        self.get_table().remove(doc_ids=[self.doc_id])
+        self.remove(doc_ids=[self.doc_id])
 
 
 use_database = Thingy.use_database

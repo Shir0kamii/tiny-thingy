@@ -118,6 +118,13 @@ def test_count(TestThingy, table):
     assert TestThingy.count() == 3
 
 
+def test_remove(TestThingy, table):
+    TestThingy(foo="bar").save()
+    assert len(table) == 1
+    TestThingy.remove(q.foo == "bar")
+    assert len(table) == 0
+
+
 def test_delete(TestThingy, table):
     thingy = TestThingy(foo="bar").save()
     assert len(table) == 1
