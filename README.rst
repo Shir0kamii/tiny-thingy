@@ -32,3 +32,5 @@ Setup, insert and find thingies
     1
     >>> Task.find_one()
     Task({'doc_id': 1, 'name': 'work on tiny-thingy'})
+
+.. _tinyDB: https://github.com/msiemens/tinydb
