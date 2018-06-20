@@ -13,9 +13,6 @@ Install
 Examples
 ========
 
-First steps
------------
-
 Setup, insert and find thingies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
