@@ -13,11 +13,8 @@ Install
 Examples
 ========
 
-First steps
------------
-
-Setup, insert and find thingies
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Setup TinyDB_ database
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -27,8 +24,18 @@ Setup, insert and find thingies
     >>> class Task(Thingy):
     ...     pass
 
+The *Task* class will represent the *task* table and instances of it are
+documents in this table.
+
+Insert and find thingies
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
     >>> task = Task({"name": "work on tiny-thingy"}).save()
     >>> Task.count()
     1
     >>> Task.find_one()
     Task({'doc_id': 1, 'name': 'work on tiny-thingy'})
+
+.. _tinyDB: https://github.com/msiemens/tinydb

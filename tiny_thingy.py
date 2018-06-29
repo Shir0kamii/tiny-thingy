@@ -24,14 +24,17 @@ class Thingy(DatabaseThingy):
 
     @classmethod
     def use_database(cls, filename):
+        """Initialize a database for the class using the specified filename"""
         cls._database = TinyDB(filename)
 
     @classmethod
     def create(cls, obj):
+        """Directly insert an object in the table"""
         return cls.table.insert(obj)
 
     @classmethod
     def find(cls, query=None, doc_ids=None):
+        """Return a list of objects matching the query"""
         if doc_ids is not None:
             return cls._find_by_id(query, doc_ids)
         if query is None:
@@ -51,6 +54,7 @@ class Thingy(DatabaseThingy):
 
     @classmethod
     def find_one(cls, query=None, doc_id=None):
+        """Return a single object matching the query"""
         if doc_id is not None:
             result = cls.find(query, doc_ids=[doc_id])
         else:
@@ -62,17 +66,21 @@ class Thingy(DatabaseThingy):
 
     @classmethod
     def count(cls):
+        """Count the number of objects in the table"""
         return len(cls.table)
 
     @classmethod
     def remove(cls, query=None, doc_ids=None):
+        """Remove the objects matching the query"""
         return cls.table.remove(query, doc_ids=doc_ids)
 
     @classmethod
     def inplace_update(cls, fields, query=None, doc_ids=None):
+        """Directly update objects matching the query with given fields"""
         return cls.table.update(fields, query, doc_ids=doc_ids)
 
     def save(self):
+        """Save the object in the table"""
         data = self.__dict__.copy()
         doc_id = data.pop("doc_id", None)
         if doc_id is not None:
@@ -82,6 +90,7 @@ class Thingy(DatabaseThingy):
         return self
 
     def delete(self):
+        """Delete the object from the table"""
         self.remove(doc_ids=[self.doc_id])
 
 
