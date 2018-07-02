@@ -14,7 +14,7 @@ setup(
     zip_safe=False,
     platforms="any",
     install_requires=[
-        "thingy>=0.8.3",
+        "thingy>=0.8.5",
         "tinydb>=3.9.0"
     ],
     classifiers=[

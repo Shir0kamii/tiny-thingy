@@ -1,2 +1,2 @@
-git+https://github.com/numberly/thingy@master
+thingy>=8.5.0
 tinydb>=3.9.0
