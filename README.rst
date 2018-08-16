@@ -3,6 +3,11 @@ Tiny-Thingy
 
 Tiny-Thingy is a wrapper around TinyDB_ that makes it more Pythonic.
 
+Status
+======
+
+Tiny-Thingy is maintained, feel free to open issues or pull requests.
+
 Install
 =======
 
